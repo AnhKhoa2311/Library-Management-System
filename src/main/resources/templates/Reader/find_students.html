@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book's Found</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+	 <div th:include="/Layouts/Admin/header"></div>
+	 <div class="container">
+	 	<div class="row">
+	 		<h1 >List Students Found</h1>
+	 	</div>
+	 	<div class="row mb-3">
+	 		<div class="col ">
+	 			<a class="btn btn-warning" th:href="@{/admin/students}">Go Back</a>
+	 		</div>
+	 	</div>
+	 	<table class="table table-striped table-bordered" >
+	 		<thead class="table-dark">
+	 			<tr>
+	 				<th> Student's ID </th>
+	 				<th> Student's First Name </th>
+	 				<th> Student's Last Name </th>
+	 				<th> Student's Phone Number</th>
+	 				<th> Student's Address</th>
+	 				<th> Student's DOB</th>
+	 				<th> Student's Email </th>
+	 				<th> Student's Gender</th>
+	 				<th> Student's Card ID</th>
+	 				<th> Action</th>
+	 			</tr>
+	 		</thead>
+	 		<tbody>
+	 			<tr th:each = "student: ${studentsByName}">
+	 				<td th:text="S + ${student.id}"></td>
+	 				<td th:text="${student.firstName}"></td>
+	 				<td th:text="${student.lastName}"></td>
+	 				<td th:text="${student.phoneNumber}"></td>
+	 				<td th:text="${student.address}"></td>
+	 				<td th:text="${student.dob}"></td>
+	 				<td th:text="${student.email}"></td>
+	 				<td th:text="${student.gender}"></td>
+	 				<td>
+	 					<a class="text-info text-decoration-none" th:text="${student.libraryCard != null} ? C + ${student.libraryCard.cardId} : ''" th:href="@{/admin/cards}"></a>
+	 				</td>
+	 				<td style="margin-top: 2px;" class="d-flex">
+	 					<a th:href="@{/students/edit/{id}(id= ${student.id})}"><i class="text-success fa-solid fa-pen-to-square "></i></a>
+	 					<a th:href="@{/students/deleted/{id}(id= ${student.id})}" style="margin-left: 4px;"><i class="text-danger fa-solid fa-trash "></i></a>
+	 				</td>
+	 			</tr>
+	 		</tbody>
+	 	</table>
+	 </div>
+</body>
+</html>

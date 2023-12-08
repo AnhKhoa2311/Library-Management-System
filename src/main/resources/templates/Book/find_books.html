@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book's Found</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+	 <div th:include="/Layouts/Admin/header">
+		 
+	 </div>
+	 <div class="container" th:action="@{/books}">
+	 	<div class="row">
+	 		<h1 >List Books Found</h1>
+	 	</div>
+	 	<div class="row mb-3">
+	 		<div class="col">
+	 			<a class="btn btn-warning" th:href="@{/admin/books}">Go Back</a>
+	 		</div>
+	 	</div>
+	 	<table class="table table-striped table-bordered" >
+	 		<thead class="table-dark">
+	 			<tr>
+	 				<th>Book's ID</th>
+	 				<th>Book's Image</th>
+	 				<th>Book's Name </th>
+	 				<th>Book Series's Name </th>
+	 				<th>Book's Episode </th>
+	 				<th>Book's Type</th>
+	 				<th>Book's Author</th>
+	 				<th>Book's Publishing Company</th>
+	 				<th>Action</th>
+	 			</tr>
+	 		</thead>
+	 		<tbody>
+	 			<tr th:each = "book: ${booksByName}" >
+	 				<td th:text="B + ${book.id}"></td>
+	 				<td>
+	 					<img class="img-thumbnail" alt="Picture" th:src="@{'/images/'+${book.booksImg}}" style="width: 100px; height: 100px;">
+	 				</td>
+	 				<td th:text="${book.booksName}"></td>
+	 				<td th:text="${book.bookSeriesName}"></td>
+	 				<td th:text="${book.episode}"></td>
+	 				<td th:text="${book.type}"></td>
+	 				<td th:text="${book.author}"></td>
+	 				<td th:text="${book.publishCompany}"></td>
+	 				<td style="display: block; margin-top: 2px" class="d-flex flex-row ">
+	 					<a th:href="@{/admin/editform/{id}(id = ${book.id})}" class="btn btn-primary">Edit</a>
+	 					<a th:href="@{/admin/deleted/{id}(id = ${book.id})}" class="btn btn-danger" style="margin-left: 2px">Delete</a>
+	 				</td>
+	 			</tr>
+	 		</tbody>
+	 	</table>
+	 </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Update Information</title>
+ 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+		crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   	 <link rel="stylesheet" href="">
+</head>
+<style>
+	html, body {
+		height:100%;
+	}
+</style>
+<body class="">
+	<div class="container-fluid">
+		<div th:include="/Layouts/User/header"></div>
+	</div>
+	<div class="d-flex justify-content-center align-items-center p-5">
+		<form class="border border-5 w-50 p-5" method="post" th:action="@{/updateinfor}" th:object="${studentupdate}">
+			<fieldset>
+				<legend class="font-weight-bold row form-group">Update Form</legend>
+				<div class="row form-group">
+					<label class="font-weight-bold">First Name:</label>
+					<input name="firstName" class="form-control" type="text" />
+				</div>
+				<div class="row form-group">
+					<label class="font-weight-bold">Last Name:</label>
+					<input name="lastName" class="form-control" type="text" />
+				</div>
+				<div class="row form-group">
+					<label class="font-weight-bold">Address:</label>
+					<input name="address" class="form-control" type="text" />
+				</div>
+				<div class="row form-group">
+					<label class="font-weight-bold">DOB:</label>
+					<input name="dob" class="form-control" type="datetime" />
+				</div>
+				<div class="row form-group">
+					<label class="font-weight-bold">Phone number:</label>
+					<input name="phoneNumber" class="form-control" type="text" />	
+				</div>
+				<div class="row form-group">
+					<label class="font-weight-bold">Gender:</label>
+					<input name="gender" class="form-control" type="text" />	
+				</div>
+				<div class="row form-group">
+					<button class="btn btn-success font-weight-bold" type="submit">Update</button>
+					<a class="btn btn-warning ml-3 text-white font-weight-bold" th:href = "@{/getinfo}">Go Back</a>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="overflow-hidden" th:include="/Layouts/User/footer"></div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div th:include="/Layouts/User/header"></div>
+	<div class="row bg-info bg-gradient">
+	    <div class="col-5 px-5 mt-2">
+	        <p class="fs-1 text-light fw-bold navbar-brand">
+				<img th:src="@{/images/library_logo2.jpg}" class="w-25 h-25"/>
+			</p>   
+	    </div>
+	</div>
+	<div class="container overflow-hidden">
+	        <div class="row bg-light bg-gradient">
+	            <figure class="col-12 figure text-center p-0">
+	                <img th:src="@{images/library_bg.jpg}" class="figure-img img-fluid w-100 pt-5" alt="Library Picture">
+	                <p class="fs-3">Library Websites</p>
+	                <figcaption class="figure-caption fs-6">Welcome to our websites!</figcaption>
+	            </figure>
+	            <div class="col-12">
+	                <div class="row row-cols-3 d-flex justify-content-around pb-5">
+	                    <div class="col card w-25 p-5 text-center" th:each="book : ${allbooks}">
+	                        <img class="img-thumbnail h-50" th:src="@{'/images/' + ${book.booksImg}}">
+	                        <div class="card-body">
+	                            <h5 class="card-title" th:text="${book.booksName}"></h5>
+	                            <p class="card-text" th:text="${book.type}"></p>
+	                            <div class="row">
+	                                <div class="col-4 d-flex justify-content-end p-0 mt-3">
+	                                    <i class="fa-solid fa-euro-sign"></i>
+	                                </div>
+	                                <div class="col-4 d-flex ms-0">
+	                                    <span style="color: rgba(0, 77, 83, 0.74); font-weight: bold; font-size: 50px;">80</span>
+	                                </div>
+	                                <div class="col-4 pb-2  d-flex justify-content-start align-items-end">
+	                                    pcm
+	                                </div>
+	                            </div>
+	                        </div>
+							<div class="row">
+								<form class="col-6" th:action="@{/details/{id} (id = ${book.id})}">
+									<div class="w-100">
+	                                	<button class=" btn btn-info text-light w-100 fa-bounce">Details</button>
+	                            	</div>
+								</form>
+								<div class="col-6">
+									<a th:href="@{/confirmlibcard}" class="btn btn-success font-weight-bold">Borrow</a>
+								</div>
+							</div>
+	                    </div>
+	                </div>
+	            </div>      
+	        </div>
+	        <div class="row p-4" style="background-color: rgba(0, 156, 159, 1);">
+	            <div class="col-8 text-light ps-4 fw-bold">
+	                Finding something about Spring Boots Document ?
+	            </div>
+	            <div class="col-4 text-end pe-4">
+	                <button class="btn btn-info w-50 text-light fa-beat">Click Here</button>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-12 text-center lh-1">
+	                <p class="fs-3 mt-5 ">3 things you must know before get into Spring Boot </p>
+	                <p class="pb-5 ">Here is those things</p>
+	            </div>
+	            <div class="col-12">
+	                <div class="row row-cols-3 d-flex justify-content-around pb-5">
+	                    <div class="col card w-25 p-5 text-center">
+	                        <i class="fa-brands fa-java fa-5x text-warning fa-bounce"></i>
+	                        <div class="card-body">
+	                            <div class="card-title">
+	                                <h5>Java Core</h5>
+	                            </div>
+	                            <div class="card-text">
+	                                A part of the Java programming language that one can use for developing 
+	                                or creating a general-purpose app.
+	                            </div>
+	                            <div class="mt-5">
+	                                <button class="btn btn-info text-light fa-fade">Read more</button>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="col card w-25 p-5 text-center">
+	                        <i class="fa-solid fa-database fa-5x text-info fa-bounce"></i>
+	                        <div class="card-body">
+	                            <div class="card-title">
+	                                <h5>Database</h5>
+	                            </div>
+	                            <div class="card-text">
+	                                Query data from a database by using basic command (MySQL, SSMS, MongoDB,...)
+	                            </div>
+	                            <div class="mt-5">
+	                                <button class="btn btn-info text-light fa-fade">Read more</button>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="col card w-25 p-5 text-center">
+	                        <i class="fa-solid fa-calculator fa-5x text-success fa-bounce"></i>
+	                        <div class="card-body">
+	                            <div class="card-title">
+	                                <h5>Algorithm</h5>
+	                            </div>
+	                            <div class="card-text">
+	                                A set of mathematical instructions or rules that, especially if given to a 
+	                                computer, will help to calculate an answer to a problem
+	                            </div>
+	                            <div class="mt-5">
+	                                <button class="btn btn-info text-light fa-fade">Read more</button>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="row bg-light bg-gradient pb-5">
+	            <div class="col-12 text-center mt-5 lh-1">
+	                <p>Nguyen Vu Anh Khoa </p>
+	                <p>Some logo of spring boot and it's relative tool you may learn</p>
+	            </div>
+	            <div class="col-12 pt-5">
+	                <div class="row row-cols-3 pb-5 d-flex justify-content-around">
+	                    <figure class="col figure text-center fa-bounce">
+	                        <img class="img-fluid figure-img " src="" alt="">
+	                        <figcaption class="fs-4 fw-bold">The IDE for Java</figcaption>
+	                    </figure>
+	                    <figure class="col figure text-center fa-bounce">
+	                        <img class="img-fluid h-50" src="" alt="">
+	                        <figcaption class="fs-4 fw-bold">Thyme Leaf</figcaption>
+	                    </figure>
+	                    <div class="col text-center fa-fade">
+	                        <img class="img-fluid w-75" src="" alt="">
+	                        <figcaption class="fs-4 fw-bold">Lombok</figcaption>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-12 text-center">
+	                <button class="btn btn-info text-light fa-fade">Read more>>>>></button>
+	            </div>
+	        </div>
+	        <div class="row row-cols-4 py-5 pb-5 d-flex justify-content-around ">
+	            <div class="col w-auto">
+	                <i class="fa-solid fa-phone fa-shake fa-rotate-270 text-info"></i>
+	                <span class="ms-2 fw-bold">Give us a call:</span>
+	                <p class="ms-4">+00 (123) 456 7890</p>
+	            </div>
+	            <div class="col w-auto">
+	                <i class="fa-solid fa-envelope text-info fa-bounce"></i>
+	                <span class="ms-2 fw-bold">Send us a mail:</span>
+	                <p class="ms-4">khoa@email.com</p>
+	            </div>
+	            <div class="col w-auto">
+	                <i class="fa-solid fa-clock text-info fa-bounce"></i>
+	                <span class="ms-2 fw-bold">Monday-Saturday</span>
+	                <p class="ms-4">08.00am - 18.00pm</p>
+	            </div>
+	            <div class="col w-auto">
+	                <i class="fa-solid fa-location-dot text-info fa-bounce"></i>
+	                <span class="fw-bold">Come visit us:</span>
+	                <p class="ms-4">Directions to <a href=""class="text-decoration-none text-info">our location</a> </p>
+	            </div>
+	        </div>
+	        
+	    </div>
+	    <div class="row row-cols-4 p-5 d-flex justify-content-around" style="background-color: rgba(0, 0, 0, 0.89);">
+	            <div class="col">
+	                <h1 class="fs-3 text-light pb-5">Contact</h1>
+	                <p class="text-white-50">Spring Boot company is a company that working in the field of IT
+	                    .They provide services that work with database according to the MVC model
+	                </p>
+	                <p class="text-white-50">Need more info about us ? Click these logos below</p>
+	                <div class="row row-cols-5 w-100  d-inline-flex justify-content-around fa-fade pt-3">
+	                    <div class="col bg-dark bg-gradient">
+	                       <a href=""><i class="fb fa-brands fa-square-facebook text-light"></i></a> 
+	                    </div>
+	                    <div class="col bg-dark bg-gradient">
+	                       <a href=""><i class="gg fa-brands fa-google-plus-g text-light "></i></a> 
+	                    </div>
+	                    <div class="col bg-dark bg-gradient">
+	                       <a href=""><i class="ins fa-brands fa-instagram text-light"></i></a> 
+	                    </div>
+	                    <div class="col bg-dark bg-gradient">
+	                       <a href=""><i class="twit fa-brands fa-twitter text-light"></i></a> 
+	                    </div>
+	                    <div class="col bg-dark bg-gradient">
+	                         <a href=""><i class="vk fa-brands fa-vk text-light"></i></a> 
+	                    </div>
+	                </div>    
+	            </div>
+	            <div class="col">
+	                <h1 class="fs-3 text-light pb-5">Our Slogan</h1>
+	                <p class="text-info">Keep everything simple not trouble!</p>
+	                <p class="fs-6 text-white-50">Sunday, 30th July 2023</p>    
+	                <hr class="mt-1 mb-1 text-white-50 fw-bold"/>
+	                <p class="text-info">Keep moving! Work hard and you'll be succed one day!</p>
+	                <p class="fs-6 text-white-50">Sunday, 30th July 2023</p>    
+	            </div>
+	            <div class="col">
+	                <h1 class="fs-3 text-light pb-5">Author</h1>
+	                <p class="text-info">Nguyen Vu Anh Khoa</p>
+	                <hr class="mt-1 mb-1 text-white-50 fw-bold"/>
+	                <p class="text-info">John Smith</p>
+	                <hr class="mt-1 mb-1 text-white-50 fw-bold"/>
+	                <p class="text-info">Wick Howdes</p>
+	                <hr class="mt-1 mb-1 text-white-50 fw-bold"/>
+	                <p class="text-info">Leon de Capricio</p>
+	                <hr class="mt-1 mb-1 text-white-50 fw-bold"/>
+	                <p class="text-info">Harden James</p>
+	            </div>
+	            <div class="col">
+	                <h1 class="fs-3 text-light pb-5">Sign in</h1>
+	                <p class="text-white-50">If you want to be a memeber of our team. Send us your name and email
+	                    . We will contact you then. Thank you for reading!    
+	                </p>
+	                <input type="text" class="border border-dark form-control w-75 bg-dark p-2 text-white" placeholder="Name" name="" id="">
+	                <input type="text" class="border border-dark form-control w-75 bg-dark mt-3 p-2 text-white" placeholder="Email" name="" id="">
+	                <button type="submit" class="p-0 form-control mt-3 w-25 btn btn-info text-light">Submit</button>            
+	            </div>
+	        </div> 
+	</div>
+    <div class="overflow-hidden" th:include="/Layouts/User/footer"></div>        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

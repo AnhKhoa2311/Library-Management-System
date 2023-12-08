@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+	 <div th:include="/Layouts/Admin/header">
+		
+	 </div>
+	 <div class="container">
+	 	<div class="row">
+	 		<h1>List Librarians</h1>
+	 	</div>
+	 	<div class="row">
+	 		<div class="col-lg-6 ">
+	 			<a th:href="@{/admin/addformlibrarian}" class="btn btn-primary btn-sm mb-3">Add New Librarian</a>
+	 		</div>
+	 		<form th:action="@{/admin/librarians/{librariansSearchName}}" th:object="${librariansByName}" 
+	 			method="post" class="col-lg-6 d-flex justify-content-end">
+	 			<input style="height: 30px;" th:value="${librariansSearchName}" name="librariansSearchName" type="text" placeholder="Search librarian's name..."/>
+	 			<button style="height: 30px;" type="submit"><i class="fa-solid fa-magnifying-glass" ></i> </button>
+	 		</form>
+	 	</div>
+	 	<table class="table table-striped table-bordered" >
+	 		<thead class="table-dark">
+	 			<tr>
+	 				<th>Librarian's ID</th>
+	 				<th>Librarian's Name </th>
+	 				<th>Librarian's Phone Number </th>
+	 				<th>Librarian's Address </th>
+	 				<th>Librarian's DOB</th>
+	 				<th>Librarian's Email</th>
+	 				<th>Librarian's Gender</th>
+	 				<th>Action</th>
+	 			</tr>
+	 		</thead>
+	 		<tbody >
+	 			<tr th:each = "librarian: ${librarians}">
+	 				<td th:text="L + ${librarian.Id}"></td>
+	 				<td th:text="${librarian.name}"></td>
+	 				<td th:text="${librarian.phoneNumber}"></td>
+	 				<td th:text="${librarian.address}"></td>
+	 				<td th:text="${librarian.dob}"></td>
+	 				<td th:text="${librarian.email}"></td>
+	 				<td th:text="${librarian.gender}"></td>
+	 				<td style="display: block; margin-top: 2px" class="d-flex flex-row " >
+	 					<a class="btn btn-primary" th:href="@{/admin/editformlibrarian/{id} (id = ${librarian.Id})} " >Edit</a>
+	 					<a class="btn btn-danger" th:href="@{/admin/deletedlibrarian/{id} (id = ${librarian.Id})}" style="margin-left: 2px">Delete</a>
+	 				</td>
+	 			</tr>
+	 		</tbody>
+	 	</table>
+	 </div>
+</body>
+</html>

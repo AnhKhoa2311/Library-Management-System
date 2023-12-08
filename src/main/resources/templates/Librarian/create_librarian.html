@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+crossorigin="anonymous">
+</head>
+<body>
+	<div th:include="/Layouts/Admin/header"></div>
+		<br>
+		<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center"> Add New Librarian</h1>
+				<div class="card-body">
+					<form th:action="@{/admin/librarians}" th:object="${librarian}" method="post">
+						<div class="form-group">
+							<label>Librarian's Name</label>
+							<input class="form-control" type="text" name="name" th:field="*{name}" placeholder="Enter Librarian's Name"/>
+							
+						</div>
+						<div class="form-group">
+							<label>Librarian's Phone Number</label>
+							<input class="form-control" type="text" name="phoneNumber" th:field="*{phoneNumber}" placeholder="Enter Librarian's Phone Number"/>
+						</div>
+						<div class="form-group">
+							<label>Librarian's Address</label>
+							<input class="form-control" type="text" name="address" th:field="*{address}" placeholder="Enter Librarian's Address"/>
+						</div>
+						<div class="form-group">
+							<label>Librarian's DOB</label>
+							<input class="form-control" type="date" name="dob" th:field="*{dob}" placeholder="Enter Librarian's DOB"/>
+						</div>
+						<div class="form-group">
+							<label>Librarian's Email</label>
+							<input class="form-control" type="text" name="email" th:field="*{email}" placeholder="Enter Librarian's Email"/>
+						</div>
+						<div class="form-group">
+							<label>Librarian's Gender</label>
+							<input class="form-control" type="text" name="gender" th:field="*{gender}" placeholder="Enter Librarian's Gender"/>
+						</div>
+						<div class="box-footer">
+							<button class="btn btn-primary" type="submit">
+								Submit
+							</button>
+							<a th:href="@{/admin/librarians}" class="btn btn-danger">Cancel</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

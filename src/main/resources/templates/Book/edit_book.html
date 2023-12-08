@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+crossorigin="anonymous">
+</head>
+<body>
+	<div th:include="/Layouts/Admin/header">
+		
+	</div>
+		<br>
+		<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center"> Update Book's Information</h1>
+				<div class="card-body">
+					<form th:action="@{/admin/{id} (id = ${editBook.id})}" th:object="${editBook}" method="post">
+						<div class="form-group">
+							<label>Book's Img</label>
+							<input class="form-control-file" type="file" name="booksImg" th:field="*{booksImg}" placeholder="Choose a file"/>
+							
+						</div>
+						<div class="form-group">
+							<label>Book's Name</label>
+							<input class="form-control" type="text" name="booksName" th:field="*{booksName}" placeholder="Enter Book's Name"/>
+							
+						</div>
+						<div class="form-group">
+							<label>Book Series's Name</label>
+							<input class="form-control" type="text" name="bookSeriesName" th:field="*{bookSeriesName}" placeholder="Enter Book Series's Name"/>
+						</div>
+						<div class="form-group">
+							<label>Book's Episode</label>
+							<input class="form-control" type="text" name="episode" th:field="*{episode}" placeholder="Enter Book's Episode"/>
+						</div>
+						<div class="form-group">
+							<label>Book's Type</label>
+							<input class="form-control" type="text" name="type" th:field="*{type}" placeholder="Enter Book's Type"/>
+						</div>
+						<div class="form-group">
+							<label>Book's Author</label>
+							<input class="form-control" type="text" name="author" th:field="*{author}" placeholder="Enter Book's Author"/>
+						</div>
+						<div class="form-group">
+							<label>Book's Publishing Company</label>
+							<input class="form-control" type="text" name="publishCompany" th:field="*{publishCompany}" placeholder="Enter Book's Publishing Company"/>
+						</div>
+						<div class="box-footer">
+							<button class="btn btn-primary" type="submit">
+								Update
+							</button>
+							<a th:href="@{/admin/books}" class="btn btn-danger" >
+								Cancel
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
